@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Own Your Life (OYL) 앱 고객 지원 및 자주 묻는 질문 / Support and FAQ for the Own Your Life (OYL) app." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="고객 지원 — Own Your Life (OYL)" />
+  <meta property="og:description" content="OYL 앱 사용 중 궁금한 점이 있으시면 아래 FAQ를 확인하거나 이메일로 문의해 주세요." />
+  <meta property="og:type" content="website" />
+  <title>고객 지원 — Own Your Life (OYL)</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #1a1a1a;
+      --bg-card: #242424;
+      --bg-surface: #2c2c2c;
+      --border: #333333;
+      --text-primary: #f0ece4;
+      --text-secondary: #b0a898;
+      --text-muted: #7a7168;
+      --accent: #c47a5a;
+      --divider: #2e2e2e;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 56px 0 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .app-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #2c2420 0%, #1a1410 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .app-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    header h1 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .effective-date {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── Language divider ── */
+    .lang-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 40px 0 0;
+    }
+
+    .lang-divider span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .lang-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Section ── */
+    .policy-section {
+      margin: 20px 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+    }
+
+    .policy-section h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .policy-section p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .policy-section p + p {
+      margin-top: 10px;
+    }
+
+    .policy-section strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* ── Bullet list ── */
+    .policy-list {
+      list-style: none;
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .policy-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .policy-list li::before {
+      content: '•';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── FAQ items ── */
+    .faq-items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .faq-item {
+      background: var(--bg-surface);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .faq-item span {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ── Version badge ── */
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      border-radius: 8px;
+      padding: 8px 14px;
+      margin-top: 10px;
+    }
+
+    .version-badge span {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .version-badge strong {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* ── Contact link ── */
+    .contact-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .contact-link:hover {
+      opacity: 0.75;
+    }
+
+    /* ── Nav link ── */
+    .nav-link {
+      display: inline-block;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    /* ── Section separator ── */
+    .section-separator {
+      border: none;
+      border-top: 1px solid var(--divider);
+      margin: 48px 0 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 32px 0 56px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    footer p + p {
+      margin-top: 4px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      header {
+        padding: 40px 0 28px;
+      }
+
+      .policy-section {
+        padding: 16px 16px;
+        border-radius: 12px;
+      }
+
+      .lang-divider {
+        padding-top: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="header-inner">
+        <div class="app-badge">
+          <div class="app-icon">&#9679;</div>
+          <span class="app-name">Own Your Life (OYL)</span>
+        </div>
+        <h1>고객 지원</h1>
+        <p class="effective-date">앱 버전 1.0 &nbsp;/&nbsp; App Version 1.0</p>
+      </div>
+    </header>
+
+    <!-- ════════════════ KOREAN ════════════════ -->
+    <div class="lang-divider"><span>한국어</span></div>
+
+    <section class="policy-section">
+      <h2>자주 묻는 질문</h2>
+      <div class="faq-items">
+        <div class="faq-item">
+          <strong>Q. 데이터는 어디에 저장되나요?</strong>
+          <span>모든 데이터는 사용자의 기기 내 로컬 저장소에만 저장됩니다. 개발사 서버로 전송되거나 저장되지 않으며, 인터넷 연결 없이도 앱을 정상적으로 사용할 수 있습니다.</span>
+        </div>
+        <div class="faq-item">
+          <strong>Q. 여러 기기 간 동기화가 가능한가요?</strong>
+          <span>현재 버전에서는 기기 간 자동 동기화를 지원하지 않습니다. 추후 업데이트를 통해 iCloud 기반 동기화 기능이 추가될 예정입니다. 데이터 이전이 필요한 경우 내보내기(Export) 기능을 활용해 주세요.</span>
+        </div>
+        <div class="faq-item">
+          <strong>Q. 앱 구매 후 환불이 가능한가요?</strong>
+          <span>Own Your Life는 Apple App Store를 통해 판매됩니다. 환불 정책은 Apple의 표준 환불 정책을 따르며, 구매 후 환불을 원하시면 App Store에서 직접 환불 요청을 제출해 주세요. 개발사는 결제 및 환불 처리에 직접 관여할 수 없습니다.</span>
+        </div>
+        <div class="faq-item">
+          <strong>Q. 어떤 플랫폼에서 사용할 수 있나요?</strong>
+          <span>현재 iOS(iPhone, iPad) 및 웹 브라우저를 지원합니다. macOS 전용 앱은 추후 출시 예정입니다. 동일한 Apple 계정으로 구매하면 지원되는 모든 Apple 기기에서 사용 가능합니다.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="policy-section">
+      <h2>문의</h2>
+      <p>앱 사용 중 문제가 발생하거나 추가적인 도움이 필요하시면 이메일로 문의해 주세요. 영업일 기준 2일 이내에 답변 드립니다.</p>
+      <a class="contact-link" href="mailto:ownyourlife.app@gmail.com">ownyourlife.app@gmail.com</a>
+    </section>
+
+    <section class="policy-section">
+      <h2>앱 정보</h2>
+      <p>Own Your Life — 하루를 설계하는 디지털 Bullet Journal</p>
+      <div class="version-badge">
+        <span>현재 버전</span>
+        <strong>1.0</strong>
+      </div>
+      <ul class="policy-list">
+        <li>플랫폼: iOS 16 이상, 웹 브라우저</li>
+        <li>가격: $4.99 (일회성 구매, 인앱 결제 없음)</li>
+        <li>언어: 한국어, English, 日本語, 中文, Deutsch, Français, Español</li>
+      </ul>
+    </section>
+
+    <section class="policy-section">
+      <h2>관련 페이지</h2>
+      <p>아래 링크에서 개인정보 처리방침을 확인하실 수 있습니다.</p>
+      <div class="nav-links">
+        <a class="nav-link" href="/privacy.html">개인정보 처리방침 &rarr;</a>
+      </div>
+    </section>
+
+    <!-- ════════════════ ENGLISH ════════════════ -->
+    <hr class="section-separator" />
+    <div class="lang-divider"><span>English</span></div>
+
+    <section class="policy-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-items">
+        <div class="faq-item">
+          <strong>Q. Where is my data stored?</strong>
+          <span>All data is stored locally on your device only. Nothing is sent to or stored on developer servers. The app works fully offline without an internet connection.</span>
+        </div>
+        <div class="faq-item">
+          <strong>Q. Can I sync data across multiple devices?</strong>
+          <span>The current version does not support automatic cross-device sync. iCloud-based sync is planned for a future update. In the meantime, you can use the Export feature to transfer your data manually.</span>
+        </div>
+        <div class="faq-item">
+          <strong>Q. Can I get a refund after purchase?</strong>
+          <span>Own Your Life is sold through the Apple App Store. Refunds follow Apple's standard refund policy. To request a refund, please submit a refund request directly through the App Store. The developer has no direct involvement in payment or refund processing.</span>
+        </div>
+        <div class="faq-item">
+          <strong>Q. Which platforms are supported?</strong>
+          <span>iOS (iPhone and iPad) and web browsers are currently supported. A dedicated macOS app is planned for a future release. A single App Store purchase grants access on all supported Apple devices linked to the same Apple ID.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="policy-section">
+      <h2>Contact</h2>
+      <p>If you encounter any issues or need additional help, please reach out by email. We aim to respond within 2 business days.</p>
+      <a class="contact-link" href="mailto:ownyourlife.app@gmail.com">ownyourlife.app@gmail.com</a>
+    </section>
+
+    <section class="policy-section">
+      <h2>App Info</h2>
+      <p>Own Your Life — Your digital Bullet Journal for intentional living.</p>
+      <div class="version-badge">
+        <span>Current version</span>
+        <strong>1.0</strong>
+      </div>
+      <ul class="policy-list">
+        <li>Platform: iOS 16 or later, Web browser</li>
+        <li>Price: $4.99 (one-time purchase, no in-app purchases)</li>
+        <li>Languages: Korean, English, Japanese, Chinese, German, French, Spanish</li>
+      </ul>
+    </section>
+
+    <section class="policy-section">
+      <h2>Related Pages</h2>
+      <p>Review our Privacy Policy at the link below.</p>
+      <div class="nav-links">
+        <a class="nav-link" href="/privacy.html">Privacy Policy &rarr;</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Own Your Life (OYL)</p>
+      <p>&#169; 2026. All rights reserved.</p>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Own Your Life (OYL) — 하루를 설계하는 디지털 Bullet Journal. Your digital Bullet Journal for intentional living." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Own Your Life (OYL)" />
+  <meta property="og:description" content="하루를 설계하는 디지털 Bullet Journal — Your digital Bullet Journal for intentional living." />
+  <meta property="og:type" content="website" />
+  <title>Own Your Life (OYL)</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #1a1a1a;
+      --bg-card: #242424;
+      --bg-surface: #2c2c2c;
+      --border: #333333;
+      --text-primary: #f0ece4;
+      --text-secondary: #b0a898;
+      --text-muted: #7a7168;
+      --accent: #c47a5a;
+      --divider: #2e2e2e;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 56px 0 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .app-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #2c2420 0%, #1a1410 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .app-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    header h1 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .tagline {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    /* ── Section ── */
+    .policy-section {
+      margin: 20px 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+    }
+
+    .policy-section h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .policy-section p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .policy-section p + p {
+      margin-top: 10px;
+    }
+
+    .policy-section strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* ── Language divider ── */
+    .lang-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 40px 0 0;
+    }
+
+    .lang-divider span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .lang-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Page links ── */
+    .page-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .page-link-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-surface);
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .page-link-item:hover {
+      opacity: 0.75;
+    }
+
+    .page-link-item .link-label {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .page-link-item strong {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .page-link-item span {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .page-link-arrow {
+      font-size: 16px;
+      color: var(--accent);
+    }
+
+    /* ── Highlight strip ── */
+    .highlight-strip {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .highlight-chip {
+      background: var(--bg-surface);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .highlight-chip strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ── Section separator ── */
+    .section-separator {
+      border: none;
+      border-top: 1px solid var(--divider);
+      margin: 48px 0 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 32px 0 56px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    footer p + p {
+      margin-top: 4px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      header {
+        padding: 40px 0 28px;
+      }
+
+      .policy-section {
+        padding: 16px 16px;
+        border-radius: 12px;
+      }
+
+      .lang-divider {
+        padding-top: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="header-inner">
+        <div class="app-badge">
+          <div class="app-icon">&#9679;</div>
+          <span class="app-name">Own Your Life (OYL)</span>
+        </div>
+        <h1>하루를 설계하는<br>디지털 Bullet Journal</h1>
+        <p class="tagline">Your digital Bullet Journal for intentional living.</p>
+      </div>
+    </header>
+
+    <!-- ════════════════ KOREAN ════════════════ -->
+    <div class="lang-divider"><span>한국어</span></div>
+
+    <section class="policy-section">
+      <p>
+        <strong>Own Your Life</strong>는 일정, 할 일, 습관, 메모를 하나의 흐름으로 연결하는 라이프 디자인 앱입니다.
+        모든 데이터는 기기에 로컬로 저장되며, 계정 가입 없이 바로 시작할 수 있습니다.
+      </p>
+      <div class="highlight-strip">
+        <div class="highlight-chip"><strong>$4.99</strong> 일회성 구매</div>
+        <div class="highlight-chip">인앱 결제 없음</div>
+        <div class="highlight-chip">7개 언어 지원</div>
+        <div class="highlight-chip">광고 없음</div>
+      </div>
+    </section>
+
+    <section class="policy-section">
+      <h2>페이지 안내</h2>
+      <div class="page-links">
+        <a class="page-link-item" href="/support.html">
+          <div class="link-label">
+            <strong>고객 지원 &amp; FAQ</strong>
+            <span>자주 묻는 질문, 문의, 앱 정보</span>
+          </div>
+          <span class="page-link-arrow">&rarr;</span>
+        </a>
+        <a class="page-link-item" href="/privacy.html">
+          <div class="link-label">
+            <strong>개인정보 처리방침</strong>
+            <span>데이터 수집 및 처리 방식 안내</span>
+          </div>
+          <span class="page-link-arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════════════════ ENGLISH ════════════════ -->
+    <hr class="section-separator" />
+    <div class="lang-divider"><span>English</span></div>
+
+    <section class="policy-section">
+      <p>
+        <strong>Own Your Life</strong> is a life design app that connects your schedule, tasks, habits, and notes in a single, coherent flow.
+        All data is stored locally on your device — no account required to get started.
+      </p>
+      <div class="highlight-strip">
+        <div class="highlight-chip"><strong>$4.99</strong> one-time purchase</div>
+        <div class="highlight-chip">No in-app purchases</div>
+        <div class="highlight-chip">7 languages</div>
+        <div class="highlight-chip">No ads</div>
+      </div>
+    </section>
+
+    <section class="policy-section">
+      <h2>Pages</h2>
+      <div class="page-links">
+        <a class="page-link-item" href="/support.html">
+          <div class="link-label">
+            <strong>Support &amp; FAQ</strong>
+            <span>Common questions, contact, app info</span>
+          </div>
+          <span class="page-link-arrow">&rarr;</span>
+        </a>
+        <a class="page-link-item" href="/privacy.html">
+          <div class="link-label">
+            <strong>Privacy Policy</strong>
+            <span>How your data is stored and handled</span>
+          </div>
+          <span class="page-link-arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Own Your Life (OYL)</p>
+      <p>&#169; 2026. All rights reserved.</p>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Own Your Life (OYL) 앱의 개인정보 처리방침 / Privacy Policy for the Own Your Life (OYL) app." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="개인정보 처리방침 — Own Your Life (OYL)" />
+  <meta property="og:description" content="OYL은 어떠한 개인정보도 수집하지 않습니다. 모든 데이터는 기기에 로컬로 저장됩니다." />
+  <meta property="og:type" content="website" />
+  <title>개인정보 처리방침 — Own Your Life (OYL)</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #1a1a1a;
+      --bg-card: #242424;
+      --bg-surface: #2c2c2c;
+      --border: #333333;
+      --text-primary: #f0ece4;
+      --text-secondary: #b0a898;
+      --text-muted: #7a7168;
+      --accent: #c47a5a;
+      --divider: #2e2e2e;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 56px 0 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .app-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #2c2420 0%, #1a1410 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .app-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    header h1 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .effective-date {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── Language divider ── */
+    .lang-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 40px 0 0;
+    }
+
+    .lang-divider span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .lang-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Section ── */
+    .policy-section {
+      margin: 20px 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+    }
+
+    .policy-section h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .policy-section p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .policy-section p + p {
+      margin-top: 10px;
+    }
+
+    .policy-section strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* ── Bullet list ── */
+    .policy-list {
+      list-style: none;
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .policy-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .policy-list li::before {
+      content: '•';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── Cloud items ── */
+    .cloud-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .cloud-item {
+      background: var(--bg-surface);
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+
+    .cloud-item strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .cloud-item span {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .cloud-note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── Contact link ── */
+    .contact-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .contact-link:hover {
+      opacity: 0.75;
+    }
+
+    /* ── Section separator ── */
+    .section-separator {
+      border: none;
+      border-top: 1px solid var(--divider);
+      margin: 48px 0 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 32px 0 56px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    footer p + p {
+      margin-top: 4px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      header {
+        padding: 40px 0 28px;
+      }
+
+      .policy-section {
+        padding: 16px 16px;
+        border-radius: 12px;
+      }
+
+      .lang-divider {
+        padding-top: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="header-inner">
+        <div class="app-badge">
+          <div class="app-icon">&#9679;</div>
+          <span class="app-name">Own Your Life (OYL)</span>
+        </div>
+        <h1>개인정보 처리방침</h1>
+        <p class="effective-date">시행일: 2026년 4월 3일 &nbsp;/&nbsp; Effective: April 3, 2026</p>
+      </div>
+    </header>
+
+    <!-- ════════════════ KOREAN ════════════════ -->
+    <div class="lang-divider"><span>한국어</span></div>
+
+    <section class="policy-section">
+      <p>
+        <strong>Own Your Life (OYL)</strong>은 사용자의 개인정보를 소중히 여깁니다.
+        본 방침은 앱이 어떠한 데이터를 수집하고 처리하는지에 대해 명확하게 설명합니다.
+      </p>
+    </section>
+
+    <section class="policy-section">
+      <h2>1. 수집하는 정보</h2>
+      <p>Own Your Life는 개발사 측에서 <strong>어떠한 개인정보도 수집하지 않습니다.</strong></p>
+      <ul class="policy-list">
+        <li>계정 생성 없음 — 이메일, 이름, 전화번호 등을 요구하지 않습니다.</li>
+        <li>분석 SDK 없음 — Firebase Analytics, Mixpanel 등 어떤 분석 도구도 포함되어 있지 않습니다.</li>
+        <li>광고 없음 — 광고 네트워크나 광고 식별자를 사용하지 않습니다.</li>
+        <li>추적 없음 — 사용자의 행동, 위치, 또는 기기 정보를 추적하지 않습니다.</li>
+      </ul>
+    </section>
+
+    <section class="policy-section">
+      <h2>2. 데이터 저장 방식</h2>
+      <p>
+        앱에 입력한 모든 데이터(할 일, 일정, 습관, 메모 등)는
+        <strong>기기의 로컬 저장소(localStorage)에만 저장</strong>됩니다.
+        개발사의 서버로 전송되지 않습니다.
+      </p>
+    </section>
+
+    <section class="policy-section">
+      <h2>3. 선택적 클라우드 동기화</h2>
+      <p>
+        사용자가 원할 경우 아래의 클라우드 동기화 옵션을 직접 설정할 수 있습니다.
+        이 기능은 <strong>선택 사항</strong>이며, 사용자가 직접 제공한 자격 증명(credential)을 통해
+        사용자 본인의 계정으로만 연결됩니다.
+      </p>
+      <div class="cloud-items">
+        <div class="cloud-item">
+          <strong>iCloud</strong>
+          <span>Apple 기기 간 동기화. Apple의 개인정보 처리방침이 적용됩니다.</span>
+        </div>
+        <div class="cloud-item">
+          <strong>Google Drive</strong>
+          <span>사용자 본인의 Google 계정을 통한 동기화. Google의 개인정보 처리방침이 적용됩니다.</span>
+        </div>
+        <div class="cloud-item">
+          <strong>Supabase (자체 호스팅)</strong>
+          <span>사용자가 직접 운영하는 Supabase 인스턴스를 통한 동기화. 데이터는 사용자 본인의 서버에 저장됩니다.</span>
+        </div>
+      </div>
+      <p class="cloud-note">개발사는 위 클라우드 서비스의 내용에 접근할 수 없으며, 해당 데이터에 대한 책임을 지지 않습니다.</p>
+    </section>
+
+    <section class="policy-section">
+      <h2>4. 제3자 데이터 공유</h2>
+      <p>
+        개발사는 사용자의 데이터를 제3자에게 <strong>공유, 판매, 임대하지 않습니다.</strong>
+        공유할 데이터 자체를 수집하지 않기 때문입니다.
+      </p>
+    </section>
+
+    <section class="policy-section">
+      <h2>5. 앱 구매 모델</h2>
+      <p>
+        Own Your Life는 <strong>일회성 유료 앱($4.99)</strong>으로, 인앱 결제(IAP), 구독, 광고가 없습니다.
+        모든 기능은 구매 즉시 잠금 해제됩니다. 결제 처리는 Apple App Store에서 담당하며,
+        개발사는 결제 정보에 접근할 수 없습니다.
+      </p>
+    </section>
+
+    <section class="policy-section">
+      <h2>6. 아동 개인정보 보호</h2>
+      <p>
+        Own Your Life는 만 13세 미만 아동을 대상으로 하지 않으며,
+        의도적으로 아동의 개인정보를 수집하지 않습니다.
+      </p>
+    </section>
+
+    <section class="policy-section">
+      <h2>7. 개인정보 처리방침 변경</h2>
+      <p>
+        본 방침이 변경될 경우, 앱 업데이트를 통해 새로운 방침을 공지합니다.
+        중요한 변경 사항이 있을 경우 시행일 전에 별도 안내드립니다.
+      </p>
+    </section>
+
+    <section class="policy-section">
+      <h2>8. 문의</h2>
+      <p>개인정보 처리방침에 관한 문의 사항이 있으시면 아래로 연락해 주세요.</p>
+      <a class="contact-link" href="mailto:ownyourlife.app@gmail.com">ownyourlife.app@gmail.com</a>
+    </section>
+
+    <!-- ════════════════ ENGLISH ════════════════ -->
+    <hr class="section-separator" />
+    <div class="lang-divider"><span>English</span></div>
+
+    <section class="policy-section">
+      <p>
+        <strong>Own Your Life (OYL)</strong> values your privacy.
+        This policy clearly explains what data the app collects and how it is handled.
+      </p>
+    </section>
+
+    <section class="policy-section">
+      <h2>1. Information We Collect</h2>
+      <p>Own Your Life <strong>collects no personal information</strong> on the developer's side.</p>
+      <ul class="policy-list">
+        <li>No accounts — we never ask for your email, name, phone number, or any credentials.</li>
+        <li>No analytics SDKs — no Firebase Analytics, Mixpanel, or any tracking tools are included.</li>
+        <li>No ads — we do not use ad networks or advertising identifiers.</li>
+        <li>No tracking — we do not track your behavior, location, or device information.</li>
+      </ul>
+    </section>
+
+    <section class="policy-section">
+      <h2>2. Data Storage</h2>
+      <p>
+        All data you enter in the app (tasks, events, habits, notes, etc.) is
+        <strong> stored locally on your device (localStorage)</strong>.
+        Nothing is transmitted to the developer's servers.
+      </p>
+    </section>
+
+    <section class="policy-section">
+      <h2>3. Optional Cloud Sync</h2>
+      <p>
+        You may optionally configure one of the following cloud sync providers.
+        This feature is entirely <strong>opt-in</strong> and connects only to your own account
+        using credentials you provide directly.
+      </p>
+      <div class="cloud-items">
+        <div class="cloud-item">
+          <strong>iCloud</strong>
+          <span>Sync across Apple devices. Apple's privacy policy applies.</span>
+        </div>
+        <div class="cloud-item">
+          <strong>Google Drive</strong>
+          <span>Sync via your own Google account. Google's privacy policy applies.</span>
+        </div>
+        <div class="cloud-item">
+          <strong>Supabase (self-hosted)</strong>
+          <span>Sync via a Supabase instance you operate yourself. Data is stored on your own server.</span>
+        </div>
+      </div>
+      <p class="cloud-note">The developer cannot access the contents of these cloud services and is not responsible for them.</p>
+    </section>
+
+    <section class="policy-section">
+      <h2>4. Third-Party Data Sharing</h2>
+      <p>
+        The developer does <strong>not share, sell, or rent your data</strong> to any third party.
+        We do not collect data to share in the first place.
+      </p>
+    </section>
+
+    <section class="policy-section">
+      <h2>5. Purchase Model</h2>
+      <p>
+        Own Your Life is a <strong>one-time paid app ($4.99)</strong> with no in-app purchases, subscriptions, or ads.
+        All features are unlocked immediately upon purchase.
+        Payment processing is handled entirely by the Apple App Store;
+        the developer has no access to your payment information.
+      </p>
+    </section>
+
+    <section class="policy-section">
+      <h2>6. Children's Privacy</h2>
+      <p>
+        Own Your Life is not directed at children under the age of 13, and we do not
+        knowingly collect personal information from children.
+      </p>
+    </section>
+
+    <section class="policy-section">
+      <h2>7. Changes to This Policy</h2>
+      <p>
+        If this policy changes, the updated version will be published via an app update.
+        For material changes, we will provide advance notice before the effective date.
+      </p>
+    </section>
+
+    <section class="policy-section">
+      <h2>8. Contact</h2>
+      <p>If you have any questions about this privacy policy, please reach out.</p>
+      <a class="contact-link" href="mailto:ownyourlife.app@gmail.com">ownyourlife.app@gmail.com</a>
+    </section>
+
+    <footer>
+      <p>Own Your Life (OYL)</p>
+      <p>&#169; 2026. All rights reserved.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
