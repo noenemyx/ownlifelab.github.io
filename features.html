@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Own Your Life (OYL) — 모든 기능 상세 안내. Daily Log, Calendar, Habits, Compass, Reviews, OKR, Future Log, Widgets." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="기능 안내 — Own Your Life (OYL)" />
+  <meta property="og:description" content="하루를 설계하는 디지털 노트의 모든 기능을 상세히 안내합니다." />
+  <meta property="og:type" content="website" />
+  <title>기능 안내 — Own Your Life (OYL)</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #1a1a1a;
+      --bg-card: #242424;
+      --bg-surface: #2c2c2c;
+      --border: #333333;
+      --text-primary: #f0ece4;
+      --text-secondary: #b0a898;
+      --text-muted: #7a7168;
+      --accent: #c47a5a;
+      --sage: #6b8a6f;
+      --divider: #2e2e2e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 56px 0 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner { display: flex; flex-direction: column; gap: 12px; }
+    .app-badge { display: inline-flex; align-items: center; gap: 10px; }
+    .app-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: linear-gradient(135deg, #2c2420 0%, #1a1410 100%);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .app-name {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+    header h1 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+    .tagline { font-size: 15px; color: var(--text-secondary); }
+    .nav-back {
+      display: inline-block; margin-top: 4px;
+      font-size: 13px; color: var(--text-muted); text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    /* ── Language divider ── */
+    .lang-divider {
+      display: flex; align-items: center; gap: 16px; padding: 48px 0 0;
+    }
+    .lang-divider span {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted); white-space: nowrap;
+    }
+    .lang-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ── Section / Feature card ── */
+    .feature {
+      margin: 32px 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px 28px;
+    }
+    .feature-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--sage);
+      margin-bottom: 8px;
+    }
+    .feature h2 {
+      font-size: 22px; font-weight: 700;
+      color: var(--text-primary); letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .feature .feature-quote {
+      font-size: 15px; color: var(--text-secondary);
+      font-style: italic; margin-bottom: 20px;
+      padding-left: 12px; border-left: 2px solid var(--accent);
+    }
+    .feature p {
+      font-size: 14px; color: var(--text-secondary);
+      line-height: 1.75; margin-bottom: 12px;
+    }
+    .feature strong { color: var(--text-primary); font-weight: 600; }
+
+    /* ── Two-column layout: text + screenshot ── */
+    .feature-layout {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 28px;
+      align-items: start;
+      margin-top: 16px;
+    }
+    .feature-layout-reverse {
+      grid-template-columns: 220px 1fr;
+    }
+    .feature-layout-reverse .screenshot {
+      grid-column: 1;
+    }
+    .feature-layout-reverse .feature-text {
+      grid-column: 2;
+    }
+    .screenshot {
+      background: var(--bg-surface);
+      border-radius: 18px;
+      padding: 4px;
+      border: 1px solid var(--border);
+    }
+    .screenshot img {
+      width: 100%; height: auto; display: block;
+      border-radius: 14px;
+    }
+    .screenshot-caption {
+      font-size: 11px; color: var(--text-muted);
+      text-align: center; margin-top: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 640px) {
+      .feature { padding: 24px 18px; border-radius: 12px; }
+      .feature-layout, .feature-layout-reverse {
+        grid-template-columns: 1fr;
+      }
+      .feature-layout-reverse .screenshot,
+      .feature-layout-reverse .feature-text {
+        grid-column: auto;
+      }
+      .screenshot { max-width: 280px; margin: 0 auto; }
+    }
+
+    /* ── Feature list (bullets) ── */
+    .feature-list {
+      list-style: none;
+      margin-top: 12px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .feature-list li {
+      display: flex; gap: 10px;
+      font-size: 14px; color: var(--text-secondary); line-height: 1.6;
+    }
+    .feature-list li::before {
+      content: '•'; color: var(--accent);
+      flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* ── Sub-card (sub-features) ── */
+    .sub-card {
+      background: var(--bg-surface);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 12px;
+    }
+    .sub-card h3 {
+      font-size: 13px; font-weight: 600;
+      color: var(--text-primary); margin-bottom: 4px;
+    }
+    .sub-card p {
+      font-size: 13px; color: var(--text-secondary);
+      line-height: 1.65; margin-bottom: 0;
+    }
+
+    /* ── Forever Clause section ── */
+    .oath-section {
+      margin: 48px 0;
+      padding: 32px 28px;
+      background: linear-gradient(180deg, #242420 0%, #1f1c19 100%);
+      border: 1px solid var(--accent);
+      border-radius: 14px;
+    }
+    .oath-section h2 {
+      font-size: 22px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 6px;
+    }
+    .oath-section .feature-quote {
+      font-size: 15px; color: var(--text-secondary);
+      font-style: italic; margin-bottom: 20px;
+      padding-left: 12px; border-left: 2px solid var(--accent);
+    }
+    .oath-list {
+      list-style: none;
+      counter-reset: oath;
+      display: flex; flex-direction: column; gap: 12px;
+      margin-top: 16px;
+    }
+    .oath-list li {
+      counter-increment: oath;
+      padding: 14px 16px 14px 48px;
+      background: var(--bg-surface);
+      border-radius: 10px;
+      position: relative;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .oath-list li::before {
+      content: counter(oath);
+      position: absolute;
+      left: 16px; top: 14px;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 11px; font-weight: 600;
+      color: var(--accent);
+    }
+    .oath-list li strong {
+      display: block;
+      color: var(--text-primary);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    /* ── Section separator ── */
+    .section-separator {
+      border: none; border-top: 1px solid var(--divider); margin: 48px 0 0;
+    }
+
+    /* ── Footer ── */
+    footer { padding: 32px 0 56px; text-align: center; }
+    footer p { font-size: 12px; color: var(--text-muted); }
+    footer p + p { margin-top: 4px; }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .toc h3 {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .toc ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+    @media (max-width: 480px) {
+      .toc ul { grid-template-columns: 1fr; }
+    }
+    .toc a {
+      font-size: 13px; color: var(--text-secondary);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .toc a:hover { color: var(--accent); }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      header { padding: 40px 0 24px; }
+      .lang-divider { padding-top: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="header-inner">
+        <div class="app-badge">
+          <div class="app-icon">&#9679;</div>
+          <span class="app-name">Own Your Life (OYL)</span>
+        </div>
+        <h1>기능 안내</h1>
+        <p class="tagline">하루를 설계하는 디지털 노트의 모든 기능 · A complete tour of Own Your Life</p>
+        <a class="nav-back" href="/">&larr; 메인 페이지로 / Back to home</a>
+      </div>
+    </header>
+
+    <!-- ════════════════════ 한국어 ════════════════════ -->
+    <div class="lang-divider"><span>한국어</span></div>
+
+    <section class="toc">
+      <h3>목차</h3>
+      <ul>
+        <li><a href="#daily-log-ko">1. Daily Log</a></li>
+        <li><a href="#calendar-ko">2. Calendar</a></li>
+        <li><a href="#habits-ko">3. Habits</a></li>
+        <li><a href="#compass-ko">4. Compass</a></li>
+        <li><a href="#reviews-ko">5. Reviews</a></li>
+        <li><a href="#okr-ko">6. OKR</a></li>
+        <li><a href="#future-log-ko">7. Future Log</a></li>
+        <li><a href="#collection-ko">8. Collection</a></li>
+        <li><a href="#widgets-ko">9. Widgets</a></li>
+        <li><a href="#settings-ko">10. Settings</a></li>
+        <li><a href="#forever-clause-ko">11. Forever Clause</a></li>
+        <li><a href="#tech-ko">12. 기술 사양</a></li>
+      </ul>
+    </section>
+
+    <!-- 1. Daily Log -->
+    <section class="feature" id="daily-log-ko">
+      <span class="feature-tag">01 · 핵심</span>
+      <h2>Daily Log — 하루를 적는 자리</h2>
+      <p class="feature-quote">"종이 저널의 의도성과 디지털의 속도, 그 사이의 균형."</p>
+      <div class="feature-layout">
+        <div class="feature-text">
+          <p>
+            OYL의 출발점이자 가장 자주 머무는 화면입니다. 하루를 <strong>기호 기반 빠른 기록</strong>으로
+            남길 수 있도록 설계되었습니다.
+          </p>
+          <p>
+            세 가지 기호로 모든 것을 분류합니다 — <strong>· (할 일)</strong>, <strong>○ (이벤트)</strong>,
+            <strong>— (메모)</strong>. 별도의 카테고리를 만들 필요도, 색깔을 정할 필요도 없습니다.
+            적는 행위 자체가 분류입니다.
+          </p>
+          <ul class="feature-list">
+            <li><strong>빠른 입력 (QuickAdd):</strong> 화면 하단에 항상 떠있는 입력창. 한 줄 적고 엔터, 끝.</li>
+            <li><strong>시간 자동 인식:</strong> "내일 3시 미팅"이라고 적으면 자동으로 시간 추출 + 일정 등록.</li>
+            <li><strong>우선순위 색조:</strong> 높음/보통/낮음을 색의 농도로만 표현. 빨간 알람 없음.</li>
+            <li><strong>미완료 자동 이월:</strong> 어제의 할 일이 자동으로 오늘로 옮겨집니다.</li>
+            <li><strong>오늘의 저널:</strong> 한 문장으로 하루를 묶는 별도 공간.</li>
+            <li><strong>10년 후 비전 카드 (NEW v2.1):</strong> 첫 3일 사용 후 부드럽게 등장하는 회고 질문.</li>
+          </ul>
+        </div>
+        <div class="screenshot">
+          <img src="/screenshots/01-daily-log.png" alt="Daily Log 화면" loading="lazy" />
+          <p class="screenshot-caption">하루를 적는 자리</p>
+        </div>
+      </div>
+      <div class="feature-layout feature-layout-reverse" style="margin-top: 28px;">
+        <div class="screenshot">
+          <img src="/screenshots/02-quick-add.png" alt="Quick Add 입력" loading="lazy" />
+          <p class="screenshot-caption">화면 하단 QuickAdd 입력창</p>
+        </div>
+        <div class="feature-text">
+          <div class="sub-card">
+            <h3>빠른 입력 (QuickAdd)</h3>
+            <p>
+              화면 어디에 있어도 한 줄로 기록할 수 있습니다. "회의록 정리", "오후 3시 카페에서 만남",
+              "한 주가 너무 빨랐다" — 한 입력창이 세 기호 모두를 받습니다.
+            </p>
+          </div>
+          <div class="sub-card">
+            <h3>스마트 시간 인식</h3>
+            <p>
+              한국어/영어로 작성된 시간 표현을 정규식으로 감지합니다. "내일 오후 3시", "tomorrow 3pm",
+              "9시 운동" 등 — 일정 블록을 자동 생성합니다.
+            </p>
+          </div>
+          <div class="sub-card">
+            <h3>스와이프 액션</h3>
+            <p>
+              왼쪽 스와이프 — 편집/삭제. 오른쪽으로 살짝 당기면 완료 처리. 길게 누르면 reorder.
+              자주 쓰는 동작이 손가락 근처에 있습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Calendar -->
+    <section class="feature" id="calendar-ko">
+      <span class="feature-tag">02 · 핵심</span>
+      <h2>Calendar — 24시간의 풍경</h2>
+      <p class="feature-quote">"시간은 자원이 아니라 거주 공간이다."</p>
+      <div class="feature-layout">
+        <div class="feature-text">
+          <p>
+            OYL의 캘린더는 단순한 일정 보기가 아닙니다. <strong>24시간의 타임라인</strong>이
+            아침부터 밤까지 한 화면에 펼쳐지고, 그 위에 색으로 호흡하는 일정 블록이 놓입니다.
+          </p>
+          <p>
+            시간을 _블로킹(blocking)_한다는 개념을 디지털에서 가장 정성스럽게 구현한 형태입니다.
+            각 블록은 단순히 일정이 아니라, <strong>"내가 이 한 시간을 무엇에 쓸지 의도적으로 정한
+            선언"</strong>입니다.
+          </p>
+          <ul class="feature-list">
+            <li><strong>탭 → 즉시 60분 이벤트 생성:</strong> 시간 위를 탭하면 그 시간 정시에 이벤트 시트가 열립니다.</li>
+            <li><strong>iOS 캘린더 통합:</strong> EventKit으로 시스템 캘린더 이벤트를 색다른 톤으로 오버레이.</li>
+            <li><strong>월·주·일 네비게이션:</strong> 상단 스트립으로 빠르게 이동.</li>
+            <li><strong>오늘 시간 표시:</strong> 빨간 가로선이 현재 시각을 표시.</li>
+            <li><strong>이벤트 길이를 시각화:</strong> 30분 미팅과 2시간 딥워크가 크기로 구분됩니다.</li>
+            <li><strong>색 = 한 가지 의도:</strong> 일정의 lifeArea(7개 축) 기반 색조 — 빨강/파랑 분류 X.</li>
+          </ul>
+        </div>
+        <div class="screenshot">
+          <img src="/screenshots/03-calendar.png" alt="Calendar 24시간 타임라인" loading="lazy" />
+          <p class="screenshot-caption">24시간의 풍경</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Habits -->
+    <section class="feature" id="habits-ko">
+      <span class="feature-tag">03 · 핵심</span>
+      <h2>Habits — 작은 반복의 풍경</h2>
+      <p class="feature-quote">"연속 일수가 아니라 마디만 본다."</p>
+      <p>
+        OYL은 습관을 <strong>스트릭(streak)으로 압박하지 않습니다</strong>. 빠진 날에 빨간 표시도,
+        "당신은 X일 연속을 깼습니다" 같은 알림도 없습니다. 대신 30일을 한 화면에 펼쳐
+        <strong>패턴</strong>을 보게 합니다.
+      </p>
+      <ul class="feature-list">
+        <li><strong>30일 그리드:</strong> 한 달의 체크인을 하나의 풍경으로.</li>
+        <li><strong>마일스톤 알림:</strong> 7일·90일·100일 — 압박이 아닌 작은 축하.</li>
+        <li><strong>"Streak"이 아닌 "Thread":</strong> 가장 길게 _이어지는 흐름_을 부드럽게 표시.</li>
+        <li><strong>빠진 날 처리:</strong> 비어있는 칸은 그저 비어있을 뿐. 사과 강요 없음.</li>
+        <li><strong>LifeArea 연결:</strong> 각 습관이 어느 인생 축에 속하는지 자동 연결.</li>
+      </ul>
+    </section>
+
+    <!-- 4. Compass -->
+    <section class="feature" id="compass-ko">
+      <span class="feature-tag">04 · 핵심</span>
+      <h2>Compass — 일곱 개의 축</h2>
+      <p class="feature-quote">"방향이 완성보다 중요하다."</p>
+      <div class="feature-layout">
+        <div class="feature-text">
+          <p>
+            건강, 일, 관계, 마음, 배움, 즐거움, 의미 — <strong>일곱 개의 LifeArea</strong>로
+            인생의 균형을 살펴봅니다. 각 축에 1~10점을 스스로 매기고, 매주 그 변화를 봅니다.
+          </p>
+          <p>
+            점수는 _경쟁_을 위한 것이 아닙니다. 다이아몬드 차트 위에 그려지는 자신의 모양이
+            지난 주와 어떻게 다른지를 _목격_하는 도구입니다. 김호 "방향이 완성보다 중요"의 시각화.
+          </p>
+          <ul class="feature-list">
+            <li><strong>다이아몬드 차트:</strong> 일곱 개 축의 점수를 한눈에.</li>
+            <li><strong>이상적 하루 (Ideal Day):</strong> 일곱 축이 균형 잡힌 하루의 시간 배분을 시각화.</li>
+            <li><strong>주간 변화:</strong> 지난 주 대비 각 축의 Δ를 색으로 표시.</li>
+            <li><strong>Balance Index:</strong> 일곱 축의 표준편차로 계산되는 균형 지표.</li>
+            <li><strong>맥락적 첫 진입 (NEW v2.1):</strong> 처음 Compass 탭을 열 때 부드러운 안내가 등장.</li>
+          </ul>
+        </div>
+        <div class="screenshot">
+          <img src="/screenshots/07-compass-radar.png" alt="Compass 다이아몬드 차트" loading="lazy" />
+          <p class="screenshot-caption">일곱 개 축의 다이아몬드</p>
+        </div>
+      </div>
+      <div class="feature-layout feature-layout-reverse" style="margin-top: 28px;">
+        <div class="screenshot">
+          <img src="/screenshots/08-compass-ideal-day.png" alt="Compass Ideal Day" loading="lazy" />
+          <p class="screenshot-caption">이상적 하루의 시간 배분</p>
+        </div>
+        <div class="feature-text">
+          <div class="sub-card">
+            <h3>Ideal Day 시각화</h3>
+            <p>
+              "내가 이상적으로 살고 싶은 하루"의 시간을 일곱 축에 배분합니다. 실제로 산 하루와
+              비교하면, _무엇이 다른지_가 즉시 보입니다.
+            </p>
+          </div>
+          <div class="sub-card">
+            <h3>축은 _고정_, 의미는 _당신의 것_</h3>
+            <p>
+              일곱 개 축은 OYL이 정해놓은 그릇입니다. 그러나 "건강이 당신에게 무엇을 의미하는지"는
+              OYL이 결정하지 않습니다. 사용자의 정의가 그 그릇을 채웁니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Reviews -->
+    <section class="feature" id="reviews-ko">
+      <span class="feature-tag">05 · 핵심</span>
+      <h2>Reviews — 네 가지 시간 단위의 회고</h2>
+      <p class="feature-quote">"회고하는 사람만이 자기 삶의 저자가 된다."</p>
+      <div class="feature-layout">
+        <div class="feature-text">
+          <p>
+            OYL의 회고는 <strong>네 가지 시간 단위로 분리</strong>되어 있습니다 —
+            일간 / 주간 / 분기 / 연간. 각 단위마다 _다른 질문_, _다른 깊이_, _다른 페이지_.
+          </p>
+          <ul class="feature-list">
+            <li><strong>일간 회고:</strong> 잠들기 전 한 줄. "오늘, 가장 잘한 것은?" 또는 비어둠.</li>
+            <li><strong>주간 회고:</strong> 일요일 30분의 의식. 지난 주의 7축 변화 + 다음 주의 의도 한 줄.</li>
+            <li><strong>분기 회고:</strong> OKR의 정직한 점검. 강제된 점수 X — _느낌_으로 표시.</li>
+            <li><strong>연간 내러티브 (Annual Letter):</strong> 한 해를 마무리하는 자리. 미래의 자신에게 보내는 편지.</li>
+            <li><strong>1년 전 카드:</strong> "이날 1년 전에는 무엇을 했나요?" 회고를 _자동으로_ 받습니다.</li>
+          </ul>
+        </div>
+        <div class="screenshot">
+          <img src="/screenshots/05-review-weekly.png" alt="주간 회고" loading="lazy" />
+          <p class="screenshot-caption">일요일 30분의 의식</p>
+        </div>
+      </div>
+      <div class="feature-layout feature-layout-reverse" style="margin-top: 28px;">
+        <div class="screenshot">
+          <img src="/screenshots/06-review-annual.png" alt="연간 회고" loading="lazy" />
+          <p class="screenshot-caption">연간 내러티브 — 한 해의 마무리</p>
+        </div>
+        <div class="feature-text">
+          <div class="sub-card">
+            <h3>네 가지 단위의 _다른_ 깊이</h3>
+            <p>
+              일간은 한 줄, 주간은 한 단락, 분기는 한 페이지, 연간은 한 편의 편지.
+              깊이가 시간 단위에 _비례_합니다.
+            </p>
+          </div>
+          <div class="sub-card">
+            <h3>회고는 _선택_, 강요 X</h3>
+            <p>
+              회고를 못 한 주가 있어도 빨간 표시 없음. 다음 주에 다시 돌아오면 그 자리가
+              그대로 비어 있을 뿐. OYL은 _기록을 강요하지 않습니다_.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. OKR -->
+    <section class="feature" id="okr-ko">
+      <span class="feature-tag">06 · 핵심</span>
+      <h2>OKR — 목표를 일곱 축에 매핑</h2>
+      <p class="feature-quote">"목표는 완수의 대상이 아니라, 방향의 표지."</p>
+      <div class="feature-layout">
+        <div class="feature-text">
+          <p>
+            OYL의 OKR은 <strong>회사용 도구가 아닙니다</strong>. Google이 만든 OKR 프레임을
+            _개인의 삶에 맞춰 단순화_한 것입니다.
+          </p>
+          <p>
+            매 분기마다 1~3개의 Objective를 설정하고, 각 Objective에 1~3개의 Key Result를 둡니다.
+            각 Objective는 일곱 축 중 하나에 속하며, 자동으로 Compass의 균형 지표에 반영됩니다.
+          </p>
+          <ul class="feature-list">
+            <li><strong>분기 단위 설정:</strong> 매 분기 시작에 OKR을 새로 정의.</li>
+            <li><strong>LifeArea 연결:</strong> 각 Objective는 일곱 축 중 하나에 명시적으로 매핑.</li>
+            <li><strong>달성률 시각화:</strong> 진행 막대로 _현재 어디_인지를 한눈에.</li>
+            <li><strong>분기 회고에 자동 통합:</strong> Reviews의 분기 단위에서 OKR이 자연스럽게 등장.</li>
+            <li><strong>점수 X, 솔직함 O:</strong> 100% 달성보다 _정직한 평가_를 우선.</li>
+          </ul>
+        </div>
+        <div class="screenshot">
+          <img src="/screenshots/11-okr.png" alt="OKR 목록" loading="lazy" />
+          <p class="screenshot-caption">분기 OKR 목록</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Future Log -->
+    <section class="feature" id="future-log-ko">
+      <span class="feature-tag">07 · 핵심</span>
+      <h2>Future Log — 미래의 자신에게 보내는 기록</h2>
+      <p class="feature-quote">"먼 미래는 _지금_의 메모에서 시작된다."</p>
+      <p>
+        지금 일정에 넣기엔 너무 멀지만 잊고 싶지 않은 것들이 있습니다 — "12월에 친구 결혼식",
+        "내년 봄 휴가 계획", "다음 분기에 시도해볼 새로운 운동". OYL의 Future Log는
+        <strong>월 단위로 묶이는 미래의 메모</strong>를 위한 자리입니다.
+      </p>
+      <ul class="feature-list">
+        <li><strong>월 단위 묶음:</strong> 미래의 12개월을 한눈에 펼쳐 보여줍니다.</li>
+        <li><strong>해당 월 진입 시 자동 promote:</strong> 12월이 되면 12월의 메모가 Daily Log로 옮겨집니다.</li>
+        <li><strong>제한 없는 미래:</strong> 1년 뒤든 5년 뒤든 적을 수 있습니다.</li>
+      </ul>
+    </section>
+
+    <!-- 8. Collection -->
+    <section class="feature" id="collection-ko">
+      <span class="feature-tag">08 · 보조</span>
+      <h2>Collection — 영감의 결</h2>
+      <p class="feature-quote">"우연히 마주친 것들을 모아두는 보관함."</p>
+      <p>
+        하루의 흐름과 별개로, 마음에 머무는 것들이 있습니다 — 카페에서 본 책 표지, 산책 중에
+        떠오른 문장, 누군가의 인용. Collection은 그런 _영감의 결_을 사진과 짧은 메모로 보관하는
+        자리입니다.
+      </p>
+      <ul class="feature-list">
+        <li><strong>사진 + 메모 + 태그:</strong> 한 항목당 세 요소만.</li>
+        <li><strong>로컬 저장 우선:</strong> 사진은 사용자의 기기와 iCloud에만 머뭅니다 — 서버 X.</li>
+        <li><strong>태그 기반 탐색:</strong> "산책", "책", "음악" 등의 자유 태그.</li>
+        <li><strong>시간순/태그순 두 가지 뷰:</strong> 한쪽은 흐름, 다른 쪽은 주제.</li>
+      </ul>
+    </section>
+
+    <!-- 9. Widgets -->
+    <section class="feature" id="widgets-ko">
+      <span class="feature-tag">09 · 위젯</span>
+      <h2>Widgets — 홈 화면과 잠금 화면의 OYL</h2>
+      <p>
+        OYL은 네 가지 위젯을 제공합니다. 모두 같은 paper-and-ink 톤을 유지하며,
+        앱을 열지 않고도 _하루의 한 단면_을 볼 수 있게 합니다.
+      </p>
+      <div class="sub-card">
+        <h3>Today's Focus</h3>
+        <p>오늘 가장 중요한 한 가지 + 다음 일정. Small / Medium / Large 사이즈.</p>
+      </div>
+      <div class="sub-card">
+        <h3>Compass</h3>
+        <p>일곱 축의 다이아몬드 차트. 한 번 보고 균형을 느낍니다.</p>
+      </div>
+      <div class="sub-card">
+        <h3>Habits</h3>
+        <p>오늘의 습관 체크인 진행도. Small에서 한 번에 5개까지.</p>
+      </div>
+      <div class="sub-card">
+        <h3>Streak</h3>
+        <p>가장 길게 _이어지는 흐름_. 빠진 날은 표시하지 않습니다.</p>
+      </div>
+    </section>
+
+    <!-- 10. Settings -->
+    <section class="feature" id="settings-ko">
+      <span class="feature-tag">10 · 설정</span>
+      <h2>Settings — 도구를 당신에게 맞춥니다</h2>
+      <div class="feature-layout feature-layout-reverse">
+        <div class="screenshot">
+          <img src="/screenshots/10-settings.png" alt="Settings 화면" loading="lazy" />
+          <p class="screenshot-caption">설정의 첫 화면</p>
+        </div>
+        <div class="feature-text">
+          <p>
+            OYL은 설정으로 압도하지 않습니다. _필요한 것만_ 있고, 모두 한 화면에서 흐름으로 정리됩니다.
+          </p>
+          <div class="sub-card">
+            <h3>프로필 (NEW v2.1)</h3>
+            <p>이름과 10년 후 비전을 언제든 편집. 온보딩에서 미루거나 비웠어도 여기서 다시 적을 수 있습니다.</p>
+          </div>
+          <div class="sub-card">
+            <h3>스케줄</h3>
+            <p>주의 시작 요일 (월/일), 하루의 시작 시각, 일과의 cut-off 시간.</p>
+          </div>
+          <div class="sub-card">
+            <h3>기본값</h3>
+            <p>새 todo의 기본 우선순위, 새 이벤트의 기본 길이 (15/30/60분).</p>
+          </div>
+          <div class="sub-card">
+            <h3>표시 (Display)</h3>
+            <p>언어 (7개), 라이트/다크, 폰트 사이즈, 색상 팔레트 선택.</p>
+          </div>
+          <div class="sub-card">
+            <h3>iCloud 동기화</h3>
+            <p>private container 동기화 ON/OFF. 데이터는 사용자의 iCloud에만 머뭅니다.</p>
+          </div>
+          <div class="sub-card">
+            <h3>알림</h3>
+            <p>일과 알림, 주간 회고 알림. 기본은 _침묵_ — 켜야만 울립니다.</p>
+          </div>
+          <div class="sub-card">
+            <h3>데이터</h3>
+            <p>JSON / Markdown 내보내기. iCloud 백업으로부터 복원. 모든 데이터 삭제 (Clear All).</p>
+          </div>
+          <div class="sub-card">
+            <h3>데모 데이터</h3>
+            <p>현실적인 1년 분량의 가상 데이터를 한 번에 로드. 처음 사용 시 화면을 채워보고 싶을 때.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Forever Clause -->
+    <section class="oath-section" id="forever-clause-ko">
+      <span class="feature-tag">11 · 약속</span>
+      <h2>Forever Clause — 영원히 지킬 여섯 약속</h2>
+      <p class="feature-quote">"광고가 아니라, 제품의 뼈대다. 깨면 우리가 판 것이 더 이상 OYL이 아니다."</p>
+      <ol class="oath-list">
+        <li>
+          <strong>구독 없음 (No Subscription)</strong>
+          한 번 구매하면 끝입니다. 월/연 결제, 자동 갱신, 강제 업그레이드 — 영원히 도입하지 않습니다.
+        </li>
+        <li>
+          <strong>광고 없음 (No Ads)</strong>
+          앱 안에 광고가 _존재하지_ 않습니다. 외부 협찬도, 인앱 프로모션도, "이런 앱은 어떠세요"도 없습니다.
+        </li>
+        <li>
+          <strong>추적 없음 (No Tracking)</strong>
+          제3자 분석 SDK를 사용하지 않습니다. 사용자의 행동 데이터를 서버로 보내지 않습니다.
+          오직 _당신의 기기와 당신의 iCloud_에만 머뭅니다.
+        </li>
+        <li>
+          <strong>게임화 없음 (No Gamification)</strong>
+          연속 일수 강제, 배지, 리더보드, "당신을 응원합니다" 푸시 — 모두 _없음_. 삶은 점수로 측정되지 않습니다.
+        </li>
+        <li>
+          <strong>AI 판단 없음 (No AI Judgment)</strong>
+          "오늘 목표보다 뒤처지셨네요" 같은 AI 평가를 만들지 않습니다. AI가 _당신을 분석_하는 대신,
+          _당신이 쓴 것을 정돈_하는 데에만 사용합니다 (그것도 on-device).
+        </li>
+        <li>
+          <strong>기본은 빼는 것 (Subtraction by Default)</strong>
+          새 기능을 추가할 때마다 _하나를 비활성화_합니다. 도구가 무거워지지 않도록.
+          "혹시 모를 사용자"를 위해 기능을 더하지 않습니다.
+        </li>
+      </ol>
+      <p style="margin-top: 20px; color: var(--text-secondary); font-size: 14px; line-height: 1.65;">
+        이 여섯 약속을 마케팅 문구가 아니라 _제품의 뼈대_로 만들었습니다.
+        깨면 OYL이 OYL이 아니게 됩니다. 그래서 깨지 않습니다.
+      </p>
+    </section>
+
+    <!-- 12. Tech -->
+    <section class="feature" id="tech-ko">
+      <span class="feature-tag">12 · 기술</span>
+      <h2>기술 사양</h2>
+      <ul class="feature-list">
+        <li><strong>플랫폼:</strong> iOS 17 이상 (iPhone, iPad)</li>
+        <li><strong>언어:</strong> 한국어, English, 日本語, 中文(简体), Français, Español, Português (7개)</li>
+        <li><strong>저장:</strong> SwiftData 로컬 + iCloud private container (선택적)</li>
+        <li><strong>가격:</strong> 현재 무료 (사용자 의견 수집 단계, 추후 유료 전환 시에도 무료 다운로더는 모든 기능 유지)</li>
+        <li><strong>인앱 결제:</strong> 없음. 모든 기능 잠금 해제.</li>
+        <li><strong>구독:</strong> 영원히 도입하지 않음.</li>
+        <li><strong>분석:</strong> 제3자 SDK 미사용. 크래시 리포트만 Apple 표준 채널.</li>
+        <li><strong>오프라인:</strong> 인터넷 없이도 모든 기능 사용 가능.</li>
+        <li><strong>접근성:</strong> VoiceOver, Dynamic Type, Reduce Motion 지원.</li>
+      </ul>
+    </section>
+
+    <!-- ════════════════════ ENGLISH ════════════════════ -->
+    <hr class="section-separator" />
+    <div class="lang-divider"><span>English</span></div>
+
+    <section class="toc">
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#daily-log-en">1. Daily Log</a></li>
+        <li><a href="#calendar-en">2. Calendar</a></li>
+        <li><a href="#habits-en">3. Habits</a></li>
+        <li><a href="#compass-en">4. Compass</a></li>
+        <li><a href="#reviews-en">5. Reviews</a></li>
+        <li><a href="#okr-en">6. OKR</a></li>
+        <li><a href="#future-log-en">7. Future Log</a></li>
+        <li><a href="#collection-en">8. Collection</a></li>
+        <li><a href="#widgets-en">9. Widgets</a></li>
+        <li><a href="#settings-en">10. Settings</a></li>
+        <li><a href="#forever-clause-en">11. Forever Clause</a></li>
+        <li><a href="#tech-en">12. Tech specs</a></li>
+      </ul>
+    </section>
+
+    <!-- 1. Daily Log -->
+    <section class="feature" id="daily-log-en">
+      <span class="feature-tag">01 · Core</span>
+      <h2>Daily Log — The place where the day is written</h2>
+      <p class="feature-quote">"The intention of paper journaling, at the speed of digital."</p>
+      <p>
+        The starting point of OYL — and the screen you'll return to most. The Daily Log lets you capture the day
+        using <strong>symbol-based quick logging</strong>:
+        <strong>· (task)</strong>, <strong>○ (event)</strong>, <strong>— (note)</strong>.
+        No categories to create, no colors to choose. The act of writing is the categorization.
+      </p>
+      <ul class="feature-list">
+        <li><strong>QuickAdd:</strong> Persistent input at the screen bottom. One line, enter, done.</li>
+        <li><strong>Smart time parsing:</strong> Write "tomorrow 3pm meeting" and the time block is auto-created.</li>
+        <li><strong>Priority by color tone:</strong> High / Medium / Low expressed as ink density. No red alarms.</li>
+        <li><strong>Auto-rollover:</strong> Yesterday's unfinished tasks land in today automatically.</li>
+        <li><strong>Today's journal:</strong> A separate one-line space to bind the day.</li>
+        <li><strong>10-year vision card (NEW v2.1):</strong> A gentle reflective question appears after Day 3 of use.</li>
+      </ul>
+    </section>
+
+    <!-- 2. Calendar -->
+    <section class="feature" id="calendar-en">
+      <span class="feature-tag">02 · Core</span>
+      <h2>Calendar — A 24-hour landscape</h2>
+      <p class="feature-quote">"Time is not a resource. It is a place to inhabit."</p>
+      <p>
+        OYL's calendar is not just a scheduler. A <strong>24-hour timeline</strong> stretches from morning to
+        midnight on a single screen, and event blocks breathe over it in color. This is time blocking, rendered
+        with the deepest care possible in digital form.
+      </p>
+      <ul class="feature-list">
+        <li><strong>Tap to create:</strong> Tap an hour row, a 60-minute event sheet opens at the hour.</li>
+        <li><strong>iOS Calendar integration:</strong> EventKit overlays system events in a distinct tone.</li>
+        <li><strong>Month / week / day navigation:</strong> Top strip for quick movement.</li>
+        <li><strong>Now indicator:</strong> A red horizontal line marks the current time.</li>
+        <li><strong>Length is visual:</strong> A 30-minute meeting and a 2-hour deep work block are distinguished by size.</li>
+        <li><strong>Color = one intention:</strong> Event hue is derived from its LifeArea — not red/blue categories.</li>
+      </ul>
+    </section>
+
+    <!-- 3. Habits -->
+    <section class="feature" id="habits-en">
+      <span class="feature-tag">03 · Core</span>
+      <h2>Habits — A landscape of small repetitions</h2>
+      <p class="feature-quote">"Not streaks. Threads."</p>
+      <p>
+        OYL does not <strong>pressure habits with streaks</strong>. No red marks on skipped days. No "you broke
+        your 12-day streak" notifications. Instead, 30 days are laid out as a single landscape — so the
+        <strong>pattern</strong> becomes visible, not the failures.
+      </p>
+      <ul class="feature-list">
+        <li><strong>30-day grid:</strong> A month's check-ins as a single landscape.</li>
+        <li><strong>Milestones, not pressure:</strong> 7-day, 90-day, 100-day — quiet celebrations.</li>
+        <li><strong>Threads, not streaks:</strong> Longest unbroken thread, gently displayed.</li>
+        <li><strong>Empty days stay empty:</strong> No guilt prompts. No apology demanded.</li>
+        <li><strong>LifeArea linkage:</strong> Each habit is connected to one of the seven axes.</li>
+      </ul>
+    </section>
+
+    <!-- 4. Compass -->
+    <section class="feature" id="compass-en">
+      <span class="feature-tag">04 · Core</span>
+      <h2>Compass — Seven axes of balance</h2>
+      <p class="feature-quote">"Direction matters more than completion."</p>
+      <p>
+        Health, Work, Relationships, Mind, Learning, Joy, Meaning — <strong>seven LifeAreas</strong> through which
+        you observe the balance of life. Rate each on a 1–10 scale; revisit weekly to see how the shape changes.
+      </p>
+      <p>
+        The score is not a competition. The diamond chart shows the shape of where you are this week vs. last —
+        a tool for <em>witnessing</em>, not for grading. The visualization of "direction over completion."
+      </p>
+      <ul class="feature-list">
+        <li><strong>Diamond chart:</strong> Seven axes at a glance.</li>
+        <li><strong>Ideal Day:</strong> Time allocation across the seven axes that would feel "balanced" to you.</li>
+        <li><strong>Weekly delta:</strong> Color-coded change vs. last week.</li>
+        <li><strong>Balance Index:</strong> Computed from the standard deviation across axes.</li>
+        <li><strong>Contextual intro (NEW v2.1):</strong> A gentle invitation appears the first time you visit Compass.</li>
+      </ul>
+    </section>
+
+    <!-- 5. Reviews -->
+    <section class="feature" id="reviews-en">
+      <span class="feature-tag">05 · Core</span>
+      <h2>Reviews — Four time-scales of reflection</h2>
+      <p class="feature-quote">"Only those who review become authors of their lives."</p>
+      <p>
+        OYL's reviews are split across <strong>four time-scales</strong> — daily / weekly / quarterly / annual.
+        Each scale asks <em>different</em> questions, at <em>different</em> depths, on <em>different</em> pages.
+      </p>
+      <ul class="feature-list">
+        <li><strong>Daily review:</strong> One line before bed. "What was the best of today?" — or leave it blank.</li>
+        <li><strong>Weekly review:</strong> A 30-minute Sunday ritual. The week's 7-axis change + one sentence of next-week intent.</li>
+        <li><strong>Quarterly review:</strong> An honest check on OKRs. No forced score — feelings, marked.</li>
+        <li><strong>Annual narrative (Annual Letter):</strong> Closing a year. A letter to your future self.</li>
+        <li><strong>1-year-ago card:</strong> "What did you do on this day last year?" — surfaced automatically.</li>
+      </ul>
+    </section>
+
+    <!-- 6. OKR -->
+    <section class="feature" id="okr-en">
+      <span class="feature-tag">06 · Core</span>
+      <h2>OKR — Goals mapped to the seven axes</h2>
+      <p class="feature-quote">"A goal is not a thing to complete. It is a marker of direction."</p>
+      <p>
+        OYL's OKRs are <strong>not a corporate tool</strong>. Google's OKR framework, <em>simplified for a
+        personal life</em>.
+      </p>
+      <p>
+        Each quarter, set 1–3 Objectives. Each Objective has 1–3 Key Results. Each Objective belongs to one of
+        the seven axes — so progress automatically reflects in Compass's balance index.
+      </p>
+      <ul class="feature-list">
+        <li><strong>Quarterly cadence:</strong> Re-set OKRs at the start of each quarter.</li>
+        <li><strong>LifeArea mapping:</strong> Each Objective is explicitly tied to one of the seven axes.</li>
+        <li><strong>Progress bars:</strong> See where you are at a glance.</li>
+        <li><strong>Integrated into Quarterly Review:</strong> OKR check-in happens naturally inside the Review flow.</li>
+        <li><strong>Honesty over score:</strong> The goal is honest reflection, not 100% completion.</li>
+      </ul>
+    </section>
+
+    <!-- 7. Future Log -->
+    <section class="feature" id="future-log-en">
+      <span class="feature-tag">07 · Core</span>
+      <h2>Future Log — Notes you'll write to your future self</h2>
+      <p class="feature-quote">"The far future starts in <em>today's</em> note."</p>
+      <p>
+        Some things are too far for the calendar but too important to forget — "friend's wedding in December,"
+        "spring vacation plan," "new exercise to try next quarter." OYL's Future Log is the place for
+        <strong>future notes grouped by month</strong>.
+      </p>
+      <ul class="feature-list">
+        <li><strong>Monthly grouping:</strong> Twelve months ahead, in one glance.</li>
+        <li><strong>Auto-promotion:</strong> When December arrives, December's notes appear in Daily Log.</li>
+        <li><strong>No future horizon limit:</strong> A year away or five years away — same place.</li>
+      </ul>
+    </section>
+
+    <!-- 8. Collection -->
+    <section class="feature" id="collection-en">
+      <span class="feature-tag">08 · Supporting</span>
+      <h2>Collection — A grain of inspiration</h2>
+      <p class="feature-quote">"A keeper for things you happened to meet."</p>
+      <p>
+        Some things stay with you outside the flow of the day — a book cover seen in a café, a sentence that
+        surfaced during a walk, someone's quote. Collection is the place for that <em>grain of inspiration</em>,
+        held with photos and brief notes.
+      </p>
+      <ul class="feature-list">
+        <li><strong>Photo + note + tag:</strong> Three elements per entry. No more.</li>
+        <li><strong>Local-first storage:</strong> Photos live on your device and in your iCloud only — no servers.</li>
+        <li><strong>Tag-based exploration:</strong> Free-form tags like "walk", "book", "music".</li>
+        <li><strong>Two views:</strong> Chronological flow, or by theme.</li>
+      </ul>
+    </section>
+
+    <!-- 9. Widgets -->
+    <section class="feature" id="widgets-en">
+      <span class="feature-tag">09 · Widgets</span>
+      <h2>Widgets — OYL on Home and Lock screens</h2>
+      <p>
+        OYL ships four widgets. All in the same paper-and-ink palette, all designed to surface a single facet of
+        the day without opening the app.
+      </p>
+      <div class="sub-card">
+        <h3>Today's Focus</h3>
+        <p>The one thing that matters most, and the next event. Small / Medium / Large.</p>
+      </div>
+      <div class="sub-card">
+        <h3>Compass</h3>
+        <p>The seven-axis diamond chart. Glance once, feel the balance.</p>
+      </div>
+      <div class="sub-card">
+        <h3>Habits</h3>
+        <p>Today's habit check-in progress. Up to 5 habits in the Small size.</p>
+      </div>
+      <div class="sub-card">
+        <h3>Streak</h3>
+        <p>Your longest unbroken thread. Missing days are not displayed.</p>
+      </div>
+    </section>
+
+    <!-- 10. Settings -->
+    <section class="feature" id="settings-en">
+      <span class="feature-tag">10 · Settings</span>
+      <h2>Settings — Adapting the tool to you</h2>
+      <p>
+        OYL does not overwhelm with settings. <em>Only what's needed</em> is here, and all of it sits on a single
+        screen as flow.
+      </p>
+      <div class="sub-card">
+        <h3>Profile (NEW v2.1)</h3>
+        <p>Edit your name and 10-year vision anytime. If you skipped during onboarding, you can write it here instead.</p>
+      </div>
+      <div class="sub-card">
+        <h3>Schedule</h3>
+        <p>Week start (Mon/Sun), day start time, day cutoff.</p>
+      </div>
+      <div class="sub-card">
+        <h3>Defaults</h3>
+        <p>Default priority for new todos, default duration for new events (15/30/60 min).</p>
+      </div>
+      <div class="sub-card">
+        <h3>Display</h3>
+        <p>Language (7), Light/Dark, font size, palette.</p>
+      </div>
+      <div class="sub-card">
+        <h3>iCloud sync</h3>
+        <p>Private-container sync on/off. Your data stays in your iCloud only.</p>
+      </div>
+      <div class="sub-card">
+        <h3>Notifications</h3>
+        <p>Daily reminders, weekly review reminders. <em>Silent</em> by default — only fires when you turn it on.</p>
+      </div>
+      <div class="sub-card">
+        <h3>Data</h3>
+        <p>Export as JSON / Markdown. Restore from iCloud backup. Clear All.</p>
+      </div>
+      <div class="sub-card">
+        <h3>Demo data</h3>
+        <p>Load a year's worth of realistic demo data with one tap — for when you want to see the app full.</p>
+      </div>
+    </section>
+
+    <!-- 11. Forever Clause -->
+    <section class="oath-section" id="forever-clause-en">
+      <span class="feature-tag">11 · Promise</span>
+      <h2>Forever Clause — Six promises kept forever</h2>
+      <p class="feature-quote">"Not marketing copy. The spine of the product. If broken, what we sold you stops being OYL."</p>
+      <ol class="oath-list">
+        <li>
+          <strong>No Subscription</strong>
+          You buy it once, you keep it. Monthly / annual billing, auto-renewal, forced upgrades — none, ever.
+        </li>
+        <li>
+          <strong>No Ads</strong>
+          No ads inside the app. No sponsored content. No in-app promotions. No "Apps you might like."
+        </li>
+        <li>
+          <strong>No Tracking</strong>
+          No third-party analytics SDKs. Your behavioral data never leaves your device. It lives only on
+          <em>your device and your iCloud.</em>
+        </li>
+        <li>
+          <strong>No Gamification</strong>
+          No forced streaks, no badges, no leaderboards, no "cheering you on" pushes. Life is not measured in points.
+        </li>
+        <li>
+          <strong>No AI Judgment</strong>
+          No "you're behind on today's goal" AI evaluation. AI is used <em>only</em> to organize what you wrote
+          — never to <em>analyze you</em>. And it runs on-device.
+        </li>
+        <li>
+          <strong>Subtraction by Default</strong>
+          Every time we add a feature, we deactivate one. The tool must stay light. No features added for
+          "maybe-future users."
+        </li>
+      </ol>
+      <p style="margin-top: 20px; color: var(--text-secondary); font-size: 14px; line-height: 1.65;">
+        These six are written into the spine of the product, not the marketing copy. Break any of them, and what
+        we sold you stops being OYL. So we won't.
+      </p>
+    </section>
+
+    <!-- 12. Tech -->
+    <section class="feature" id="tech-en">
+      <span class="feature-tag">12 · Tech</span>
+      <h2>Tech specs</h2>
+      <ul class="feature-list">
+        <li><strong>Platform:</strong> iOS 17 or later (iPhone, iPad)</li>
+        <li><strong>Languages:</strong> Korean, English, Japanese, Simplified Chinese, French, Spanish, Portuguese (7)</li>
+        <li><strong>Storage:</strong> SwiftData local + iCloud private container (optional)</li>
+        <li><strong>Price:</strong> Currently free (user-acquisition phase; existing free downloaders keep full access if paid model returns)</li>
+        <li><strong>In-app purchases:</strong> None. All features unlocked.</li>
+        <li><strong>Subscription:</strong> Never. Ever.</li>
+        <li><strong>Analytics:</strong> No third-party SDK. Crash reports through Apple's standard channel only.</li>
+        <li><strong>Offline:</strong> Full functionality without internet.</li>
+        <li><strong>Accessibility:</strong> VoiceOver, Dynamic Type, Reduce Motion supported.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>Own Your Life (OYL)</p>
+      <p>&#169; 2026. All rights reserved.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
